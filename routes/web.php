@@ -1,18 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Auth::routes(['verify' => true]);
+
+// Оборачиваем все маршруты в префикс /admin
+Route::prefix('admin')->group(function () {
+
+});
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Маршрут для домашней страницы пользователя (после входа в систему)
+Route::get('/home', [HomeController::class, 'index'])->name('home');
