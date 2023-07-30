@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,10 +16,10 @@ class AdminController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     // Метод для отображения админ-панели
     public function index()
     {
-        return view('admin.dashboard'); // Замените 'admin.dashboard' на имя вашего представления админ-панели
+        return view('admin.pages.dashboard'); // Замените 'admin.dashboard' на имя вашего представления админ-панели
     }
 }

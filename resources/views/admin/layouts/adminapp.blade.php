@@ -39,13 +39,13 @@
 <body>
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
-        @yield('header')
+        @include('admin.partials.header')
     </header>
     <!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
-        @yield('sidebar')
+        @include('admin.partials.sidebar')
     </aside>
     <!-- End Sidebar-->
 
@@ -59,12 +59,13 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-        @yield('footer')
+        @include('admin.partials.footer')
     </footer>
     <!-- End Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
 </body>
 
 </html>
