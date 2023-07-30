@@ -1,12 +1,12 @@
-    <div class="d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-            <img src="{{ asset('/img/admin/logo.png') }}" alt="" />
-            <span class="d-none d-lg-block">NiceAdmin</span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
-    <!-- End Logo -->
-    @hasSection('search')
+<div class="d-flex align-items-center justify-content-between">
+    <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center">
+        <img src="{{ asset('/img/admin/logo.png') }}" alt="" />
+        <span class="d-none d-lg-block">{{ config('app.name_short') }}</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+</div>
+<!-- End Logo -->
+@hasSection('search')
     {{-- @yield('search') --}}
     <div class="search-bar">
         <form class="search-form d-flex align-items-center" method="POST" action="#">
@@ -15,9 +15,9 @@
         </form>
     </div>
     <!-- End Search Bar -->
-    @endif
+@endif
 
-    @hasSection('navigation')
+@hasSection('navigation')
     {{-- @yield('navigation') --}}
     <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -223,4 +223,4 @@
         </ul>
     </nav>
     <!-- End Icons Navigation -->
-    @endif
+@endif
