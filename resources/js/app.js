@@ -5,7 +5,26 @@ import './bootstrap';
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
+import 'tinymce/tinymce';
+// Adding the necessary TinyMCE plugins
+// import 'tinymce/plugins/plugin_name';
+import 'tinymce/plugins/advlist';
+import 'tinymce/plugins/link';
+import 'tinymce/plugins/image';
+import 'tinymce/plugins/code';
+import 'tinymce/plugins/table';
+import 'tinymce/plugins/autoresize';
+import 'tinymce/plugins/lists';
+import 'tinymce/plugins/wordcount';
+import 'tinymce/plugins/emoticons';
+import 'tinymce/plugins/fullscreen';
+import 'tinymce/plugins/preview';
+// Importing Styles for TinyMCE
+import 'tinymce/skins/ui/oxide-dark/skin.min.css';
+import 'tinymce/skins/content/dark/content.min.css';
+// Importing a theme
+import 'tinymce/themes/silver';
+
 import { createApp } from 'vue';
 
 /**

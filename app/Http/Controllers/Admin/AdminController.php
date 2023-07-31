@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Profile;
 
 class AdminController extends Controller
 {
@@ -20,6 +21,10 @@ class AdminController extends Controller
     // Метод для отображения админ-панели
     public function index()
     {
-        return view('admin.pages.dashboard'); // Замените 'admin.dashboard' на имя вашего представления админ-панели
+        // Получаем первую запись из таблицы profiles
+        $profile = Profile::first();
+
+        // Возвращаем представление и передаем переменную $profile
+        return view('admin.pages.dashboard', compact('profile'));
     }
 }
