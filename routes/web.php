@@ -14,3 +14,4 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('download_cv', [AboutController::class, 'downloadCV'])->name('cv.download');
