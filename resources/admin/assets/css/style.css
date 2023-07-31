@@ -315,6 +315,7 @@ h6 {
     font-family: "Nunito", sans-serif;
     color: #899bbd;
     font-weight: 600;
+    border-bottom: 1px solid #fff;
 }
 
 .breadcrumb a {
@@ -1225,11 +1226,7 @@ h6 {
 # Footer
 --------------------------------------------------------------*/
 .footer {
-    bottom: 0;
     padding: 20px calc(24px / 2);
-    position: absolute;
-    right: 0;
-    left: 0;
     color: #919bae;
     height: 85px;
     -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -1248,4 +1245,66 @@ h6 {
     text-align: center;
     font-size: 13px;
     color: #919bae;
+}
+@media (max-width: 434px) {
+    .footer {
+        height: 105px;
+    }
+}
+@media (max-width: 368px) {
+    .footer {
+        height: 125px;
+    }
+    .main {
+        margin-bottom: 85px !important;
+    }
+}
+.card {
+    margin-bottom: 24px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #252b3b;
+    background-clip: border-box;
+    border: 0 solid #2d3448;
+    border-radius: 0.25rem;
+}
+.card h4 {
+    color: #eff2f7;
+}
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem 1.25rem;
+}
+.avatar-sm {
+    height: 3rem;
+    width: 3rem;
+}
+.avatar-title {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-color: #0f9cf3;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-weight: 500;
+    font-size: 24px;
+    height: 100%;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
 }

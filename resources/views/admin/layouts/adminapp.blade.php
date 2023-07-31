@@ -22,8 +22,7 @@
         rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/admin/assets/scss/app.scss', 'resources/css/app.css', 'resources/js/app.js'])
-    @vite(['resources/admin/assets/vendor/apexcharts/apexcharts.min.js', 'resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js', 'resources/admin/assets/vendor/chart.js/chart.umd.js', 'resources/admin/assets/vendor/echarts/echarts.min.js', 'resources/admin/assets/vendor/quill/quill.min.js', 'resources/admin/assets/vendor/simple-datatables/simple-datatables.js', 'resources/admin/assets/vendor/tinymce/tinymce.min.js', 'resources/admin/assets/vendor/php-email-form/validate.js', 'resources/admin/assets/js/main.js'])
+    @vite(['resources/admin/assets/scss/app.scss', 'resources/js/app.js', 'resources/admin/assets/js/main.js'])
 
     <!-- =======================================================
     * Template: NiceAdmin
@@ -36,7 +35,7 @@
     ======================================================== -->
 </head>
 
-<body>
+<body id="app">
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
         @include('admin.partials.header')
@@ -50,15 +49,15 @@
     <!-- End Sidebar-->
 
     <!-- ======= Main ======= -->
-    <main id="main" class="main">
-        <div class="content">
+    <main id="main" class="main mb-5">
+        <div class="content mb-5">
             @yield('content')
         </div>
     </main>
     <!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
+    <footer id="footer" class="footer fixed-bottom">
         @include('admin.partials.footer')
     </footer>
     <!-- End Footer -->
