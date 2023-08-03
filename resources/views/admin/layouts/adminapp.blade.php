@@ -22,7 +22,7 @@
         rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/admin/assets/scss/app.scss', 'resources/js/app.js', 'resources/admin/assets/js/main.js'])
+    @vite(['resources/admin/assets/scss/app.scss', 'resources/admin/assets/js/app.js'])
 
     <!-- =======================================================
     * Template: NiceAdmin
@@ -35,7 +35,7 @@
     ======================================================== -->
 </head>
 
-<body id="app">
+<body>
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
         @include('admin.partials.header')

@@ -1,12 +1,17 @@
-
 import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
+    server: {
+        host: "portfolio.test",
+    },
     plugins: [
         laravel({
-            input: ["resources/sass/app.scss", "resources/js/app.js"],
+            input: {
+                admin: ["resources/admin/assets/js/app.js"],
+                site: ["resources/js/app.js"]
+            },
             refresh: true,
             sourcemap: false,
         }),
@@ -23,7 +28,7 @@ export default defineConfig({
         alias: {
             vue: "vue/dist/vue.esm-bundler.js",
             "~bootstrap": "node_modules/bootstrap",
-            "~assets": "resources/admin/assets",
+            "~admin_assets": "resources/admin/assets",
         },
     },
 });
