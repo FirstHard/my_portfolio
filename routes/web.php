@@ -11,7 +11,8 @@ Auth::routes(['verify' => true]);
 
 Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('dashboard');
-    Route::resource('profile', ProfileController::class)->only(['show', 'create', 'store', 'edit', 'update', 'destroy']);
+    Route::resource('profile', ProfileController::class)->except(['index', 'destroy']);
+    Route::resource('about', AboutController::class)->except(['index', 'destroy']);
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

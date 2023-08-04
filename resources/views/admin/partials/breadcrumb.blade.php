@@ -16,6 +16,18 @@
                 <li class="breadcrumb-item"><a href="{{ route('profile.show', 1) }}">Profile</a></li>
                 <li class="breadcrumb-item active">Edit Profile</li>
             @endif
+        @elseif (request()->is('admin/about') || request()->is('admin/about/*'))
+            <!-- Breadcrumb for About Me -->
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            @if (request()->route()->named('about.show'))
+                <li class="breadcrumb-item active">About Me</li>
+            @elseif (request()->route()->named('about.create'))
+                <li class="breadcrumb-item"><a href="{{ route('about.show', 1) }}">About Me</a></li>
+                <li class="breadcrumb-item active">Create About Me</li>
+            @elseif (request()->route()->named('about.edit'))
+                <li class="breadcrumb-item"><a href="{{ route('about.show', 1) }}">About Me</a></li>
+                <li class="breadcrumb-item active">Edit About Me</li>
+            @endif
         @endif
     </ol>
 </nav>

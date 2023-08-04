@@ -10,7 +10,7 @@ export default defineConfig({
         laravel({
             input: {
                 admin: ["resources/admin/assets/js/app.js"],
-                site: ["resources/js/app.js"]
+                site: ["resources/site/js/app.js"]
             },
             refresh: true,
             sourcemap: false,
@@ -28,7 +28,7 @@ export default defineConfig({
         alias: {
             vue: "vue/dist/vue.esm-bundler.js",
             "~bootstrap": "node_modules/bootstrap",
-            "~admin_assets": "resources/admin/assets",
+            "~admin_assets": "resources/admin/assets"
         },
     },
 });

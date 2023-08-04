@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::defaultStringLength(191);
-
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_confirmed')->default(false);
-            $table->string('confirmation_token')->nullable();
+        Schema::table('abouts', function (Blueprint $table) {
+            $table->string('generated_cv_filename')->after('cv_file')->nullable();
         });
     }
 
@@ -24,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['is_confirmed', 'confirmation_token']);
+        Schema::table('abouts', function (Blueprint $table) {
+            $table->dropColumn('generated_cv_filename');
         });
     }
 };
