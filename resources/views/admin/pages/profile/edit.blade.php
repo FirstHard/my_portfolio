@@ -9,9 +9,7 @@
         <form action="{{ route('profile.update', ['profile' => $profile->id]) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <!-- Используем метод PUT для обновления данных профиля -->
-
-            <!-- Выводим текущее фото профиля -->
+            
             @if ($profile->photo)
                 <img src="{{ asset('storage/photos/' . $profile->photo) }}" class="img-fluid" style="max-width: 200px"
                     alt="Profile Photo">

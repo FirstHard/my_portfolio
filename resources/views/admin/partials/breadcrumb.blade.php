@@ -2,10 +2,8 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><i class="bi bi-house-heart"></i></li>
         @if (request()->is('admin'))
-            <!-- Breadcrumb for Dashboard -->
             <li class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></li>
         @elseif (request()->is('admin/profile') || request()->is('admin/profile/*'))
-            <!-- Breadcrumb for Profile -->
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             @if (request()->route()->named('profile.show'))
                 <li class="breadcrumb-item active">Profile</li>
@@ -17,7 +15,6 @@
                 <li class="breadcrumb-item active">Edit Profile</li>
             @endif
         @elseif (request()->is('admin/about') || request()->is('admin/about/*'))
-            <!-- Breadcrumb for About Me -->
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             @if (request()->route()->named('about.show'))
                 <li class="breadcrumb-item active">About Me</li>
@@ -27,6 +24,17 @@
             @elseif (request()->route()->named('about.edit'))
                 <li class="breadcrumb-item"><a href="{{ route('about.show', 1) }}">About Me</a></li>
                 <li class="breadcrumb-item active">Edit About Me</li>
+            @endif
+        @elseif (request()->is('admin/skills-technology') || request()->is('admin/skills-technology/*'))
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            @if (request()->route()->named('skills-technology.index'))
+                <li class="breadcrumb-item active">Skills & Technology</li>
+            @elseif (request()->route()->named('skills-technology.create'))
+                <li class="breadcrumb-item"><a href="{{ route('skills-technology.show', 1) }}">Skills & Technology</a></li>
+                <li class="breadcrumb-item active">Create Skills & Technology Record</li>
+            @elseif (request()->route()->named('skills-technology.edit'))
+                <li class="breadcrumb-item"><a href="{{ route('skills-technology.show', 1) }}">Skills & Technology</a></li>
+                <li class="breadcrumb-item active">Edit Skills & Technology Record</li>
             @endif
         @endif
     </ol>
