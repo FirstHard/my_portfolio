@@ -5,7 +5,6 @@
             <span>Dashboard</span>
         </a>
     </li>
-    <!-- End Dashboard Nav -->
 
     <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/profile*') ? 'active' : '' }}" href="{{ route('profile.show', 1) }}">
@@ -16,8 +15,13 @@
             <i class="bi bi-person"></i>
             <span>About Me</span>
         </a>
+        <a class="nav-link {{ request()->is('admin/skills-technology*') ? 'active' : '' }}"
+            href="{{ route('skills-technology.index') }}">
+            <i class="bi bi-person"></i>
+            <span>Skills & Tech.</span>
+        </a>
     </li>
-    <!-- End Profile Page Nav -->
+
     {{-- 
         <li class="nav-item">
           <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
