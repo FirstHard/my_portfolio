@@ -37,11 +37,13 @@
             <div class="row">
                 <div class="col-md-4 mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control bg-dark text-white rounded-1" id="email" name="email" value="{{ $profile->email }}">
+                    <input type="email" class="form-control bg-dark text-white rounded-1" id="email" name="email"
+                        value="{{ $profile->email }}">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="skype" class="form-label">Skype</label>
-                    <input type="text" class="form-control bg-dark text-white rounded-1" id="skype" name="skype" value="{{ $profile->skype }}">
+                    <input type="text" class="form-control bg-dark text-white rounded-1" id="skype" name="skype"
+                        value="{{ $profile->skype }}">
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="telegram" class="form-label">Telegram</label>

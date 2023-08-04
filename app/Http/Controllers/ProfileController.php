@@ -5,18 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profile;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -85,7 +76,7 @@ class ProfileController extends Controller
         $profile = Profile::first();
 
         // Display the view with the profile passed to it
-        return view('admin.pages.profile.index', compact('profile'));
+        return view('admin.pages.profile.show', compact('profile'));
     }
 
     /**
@@ -95,7 +86,7 @@ class ProfileController extends Controller
     {
         // Здесь вы можете получить данные профиля по его ID и передать их в шаблон для отображения формы редактирования
         $profile = Profile::first();
-    
+
         return view('admin.pages.profile.edit', compact('profile'));
     }
 

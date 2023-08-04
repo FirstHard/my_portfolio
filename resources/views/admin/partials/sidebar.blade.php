@@ -12,6 +12,10 @@
             <i class="bi bi-person"></i>
             <span>Profile</span>
         </a>
+        <a class="nav-link {{ request()->is('admin/about*') ? 'active' : '' }}" href="{{ route('about.show', 1) }}">
+            <i class="bi bi-person"></i>
+            <span>About Me</span>
+        </a>
     </li>
     <!-- End Profile Page Nav -->
     {{-- 

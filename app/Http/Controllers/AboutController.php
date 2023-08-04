@@ -10,14 +10,12 @@ class AboutController extends Controller
 {
     public function edit()
     {
-        // We only have one "About" entry
         $about = About::first();
-        return view('about.edit', compact('about'));
+        return view('admin.pages.about.edit', compact('about'));
     }
 
     public function update(Request $request)
     {
-        // We only have one "About" entry
         $about = About::first();
 
         $request->validate([
@@ -25,37 +23,78 @@ class AboutController extends Controller
             'cv_file' => 'nullable|mimes:pdf|max:2048',
         ]);
 
-        $about->content = $request->input('content');
+        $about->content = $request->content;
 
         if ($request->hasFile('cv_file')) {
             $file = $request->file('cv_file');
-            $originalName = $file->getClientOriginalName();
-            $newPath = $file->storeAs('cv', $originalName, 'public');
-
-            if ($about->cv_file) {
-                $currentPath = $about->cv_file;
-                if (Storage::exists($currentPath)) {
-                    Storage::delete($currentPath);
-                }
+            $filename = uniqid() . '_' . $file->getClientOriginalName();
+            if ($about->generated_cv_filename && Storage::exists('cv/' . $about->generated_cv_filename)) {
+                Storage::delete('cv/' . $about->generated_cv_filename);
             }
-
-            $about->cv_file = $newPath;
+            $file->storeAs('cv', $filename, 'public');
+            $about->cv_file = $file->getClientOriginalName();
+            $about->generated_cv_filename = $filename;
         }
 
         $about->save();
 
-        return redirect()->route('about.edit')->with('success', 'Data updated successfully.');
+        return redirect()->route('dashboard')->with('success', 'Data updated successfully.');
     }
 
     public function downloadCV()
     {
-        // We only have one "About" entry
         $about = About::first();
-
-        if ($about && $about->cv_file && Storage::exists($about->cv_file)) {
-            return Storage::download($about->cv_file);
-        } else {
-            return redirect()->route('about.edit')->with('error', 'Файл CV не найден.');
+        if ($about && $about->generated_cv_filename && Storage::exists('public/cv/' . $about->generated_cv_filename)) {
+            return Storage::download('public/cv/' . $about->generated_cv_filename, $about->cv_file);
         }
+        return back()->with('error', 'CV file not found.');
+    }
+
+    /**
+     * Show the form for editing or creating a new resource.
+     */
+    public function show()
+    {
+        $about = About::first();
+        if ($about) {
+            return redirect()->route('about.edit', compact('about'));
+        }
+        return view('admin.pages.about.create');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $about = new About();
+        return view('admin.pages.about.create', compact('about'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'content' => 'required|string',
+            'cv_file' => 'nullable|mimes:pdf|max:2048',
+        ]);
+
+        $about = new About();
+        $about->content = $request->content;
+
+        if ($request->hasFile('cv_file')) {
+            $file = $request->file('cv_file');
+            $filename = uniqid() . '_' . $file->getClientOriginalName();
+            $file->storeAs('cv', $filename, 'public');
+            $about->generated_cv_filename = $filename;
+            $about->cv_file = $file->getClientOriginalName();
+            $about->generated_cv_filename = $filename;
+        }
+
+        $about->save();
+
+        return redirect()->route('dashboard')->with('success', 'Data created successfully.');
     }
 }
