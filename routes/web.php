@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\SkillsTechnologyController;
+use App\Http\Controllers\ExperienceController;
 
 Auth::routes(['verify' => true]);
 
@@ -15,6 +16,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('profile', ProfileController::class)->except(['index', 'destroy']);
     Route::resource('about', AboutController::class)->except(['index', 'destroy']);
     Route::resource('skills-technology', SkillsTechnologyController::class);
+    Route::resource('experience', ExperienceController::class)->except(['show']);
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

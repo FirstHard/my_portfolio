@@ -20,6 +20,11 @@
             <i class="bi bi-person"></i>
             <span>Skills & Tech.</span>
         </a>
+        <a class="nav-link {{ request()->is('admin/experience*') ? 'active' : '' }}"
+            href="{{ route('experience.index') }}">
+            <i class="bi bi-person"></i>
+            <span>Experience</span>
+        </a>
     </li>
 
     {{-- 

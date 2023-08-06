@@ -6,6 +6,7 @@
         <h1>Skills & Technology Records</h1>
         @include('admin.partials.breadcrumb')
     </div>
+    @include('admin.partials.alert')
     <div class="container skills-technology mt-4">
         <a href="{{ route('skills-technology.create') }}" class="btn btn-success">Create New Record</a>
 

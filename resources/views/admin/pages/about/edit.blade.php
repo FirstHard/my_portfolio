@@ -23,7 +23,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary rounded-1">Update</button>
+            <button type="submit" class="btn btn-outline-primary rounded-1">Update</button>
         </form>
     </div>
 @endsection

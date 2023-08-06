@@ -5,6 +5,7 @@
         <h1>Profile</h1>
         @include('admin.partials.breadcrumb')
     </div>
+    @include('admin.partials.alert')
     @if ($profile)
         <div class="profile-info">
             <img src="{{ asset('storage/photos/' . $profile->photo) }}" class="img-wluid" style="max-width: 200px"

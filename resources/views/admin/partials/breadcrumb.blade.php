@@ -34,7 +34,18 @@
                 <li class="breadcrumb-item active">Create Skills & Technology Record</li>
             @elseif (request()->route()->named('skills-technology.edit'))
                 <li class="breadcrumb-item"><a href="{{ route('skills-technology.show', 1) }}">Skills & Technology</a></li>
-                <li class="breadcrumb-item active">Edit Skills & Technology Record</li>
+                <li class="breadcrumb-item active">Edit: "{{ $skillsTechnology->title }}"</li>
+            @endif
+        @elseif (request()->is('admin/experience') || request()->is('admin/experience/*'))
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            @if (request()->route()->named('experience.index'))
+                <li class="breadcrumb-item active">Experience</li>
+            @elseif (request()->route()->named('experience.create'))
+                <li class="breadcrumb-item"><a href="{{ route('experience.index', 1) }}">Experience</a></li>
+                <li class="breadcrumb-item active">Create Experience Record</li>
+            @elseif (request()->route()->named('experience.edit'))
+                <li class="breadcrumb-item"><a href="{{ route('experience.index', 1) }}">Experience</a></li>
+                <li class="breadcrumb-item active">Edit : "{{ $experience->title }}"</li>
             @endif
         @endif
     </ol>

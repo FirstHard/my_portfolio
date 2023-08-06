@@ -80,11 +80,33 @@
                         </div>
                     </div>
                     <div class="profile-block d-flex justify-content-between">
-                        <a href="{{ route('skills-technology.create', ['about' => $about->id]) }}"
+                        <a href="{{ route('skills-technology.create') }}"
                             class="btn btn-outline-info text-light rounded-1">Add
                             new record</a>
                         <a href="{{ route('skills-technology.index') }}"
                             class="btn btn-outline-primary text-light rounded-1">View records</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-4">Experience</h4>
+                        </div>
+                        <div class="avatar-sm">
+                            <span class="avatar-title bg-dark text-primary rounded-3">
+                                <i class="bi bi-file-earmark-person-fill"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="profile-block d-flex justify-content-between">
+                        <a href="{{ route('experience.create') }}" class="btn btn-outline-info text-light rounded-1">Add
+                            new record</a>
+                        <a href="{{ route('experience.index') }}" class="btn btn-outline-primary text-light rounded-1">View
+                            records</a>
                     </div>
                 </div>
             </div>

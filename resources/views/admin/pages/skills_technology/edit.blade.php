@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Edit Skills & Technology Record</h1>
+        <h1>Edit: "{{ $skillsTechnology->title }}"</h1>
         @include('admin.partials.breadcrumb')
     </div>
 
