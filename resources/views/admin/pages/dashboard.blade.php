@@ -75,7 +75,7 @@
                         </div>
                         <div class="avatar-sm">
                             <span class="avatar-title bg-dark text-primary rounded-3">
-                                <i class="bi bi-file-earmark-person-fill"></i>
+                                <i class="bi bi-card-checklist"></i>
                             </span>
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="avatar-sm">
                             <span class="avatar-title bg-dark text-primary rounded-3">
-                                <i class="bi bi-file-earmark-person-fill"></i>
+                                <i class="bi bi-person-workspace"></i>
                             </span>
                         </div>
                     </div>
