@@ -21,6 +21,10 @@
                 <label for="image" class="form-label">Image</label>
                 <input type="file" name="image" id="image" class="form-control bg-dark text-white rounded-1">
             </div>
+            <div class="mb-3">
+                <label for="gallery" class="form-label">Gallery</label>
+                <input type="file" name="gallery[]" id="gallery" class="form-control bg-dark text-white rounded-1" multiple>
+            </div>
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="creation_year" class="form-label">Creation Year</label>

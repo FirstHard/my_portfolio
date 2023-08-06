@@ -25,42 +25,33 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'creation_year' => 'required|integer|min:1900|max:' . date('Y'),
+            'creation_year' => 'required|integer|min:1900',
             'description' => 'required|string',
             'domain' => 'nullable|string|max:64',
-            'gallery' => 'nullable|string',
-            'cost_from' => 'nullable|integer',
-            'cost_to' => 'nullable|integer|gte:cost_from',
+            'cost_from' => 'nullable|numeric|min:0',
+            'cost_to' => 'nullable|numeric|min:' . ($request->cost_from ?: 0),
             'archived' => 'boolean',
-            'tags' => 'nullable|array',
-            'tags.*' => 'integer|exists:tags,id',
+            'gallery' => 'nullable|array',
+            'gallery.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Проверяем наличие файла image в запросе
+        // Handle file upload for main image
+        $projectData = $request->only(['title', 'creation_year', 'description', 'domain', 'cost_from', 'cost_to', 'archived']);
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-
-            // Генерируем уникальное имя файла, сохраняем оригинальное имя для отображения в представлении
-            $imageName = time() . '_' . $image->getClientOriginalName();
-
-            // Проверяем наличие файла с таким именем на сервере
-            if (Storage::exists('images/projects/' . $imageName)) {
-                // Если файл с таким именем уже существует, удаляем его
-                Storage::delete('images/projects/' . $imageName);
-            }
-
-            // Сохраняем файл с уникальным именем
-            $image->storeAs('images/projects', $imageName, 'public');
-
-            // Сохраняем имя файла изображения в поле image_path модели Project
-            $request->merge(['image_path' => $imageName]);
+            $imagePath = $request->file('image')->store('public/projects');
+            $projectData['image_path'] = $imagePath;
         }
 
-        // Create the project and associate tags if provided
-        $project = Project::create($request->all());
-        $project->tags()->sync($request->tags);
+        // Create the project
+        $project = Project::create($projectData);
+
+        // Handle file upload for gallery images
+        if ($request->hasFile('gallery')) {
+            $galleryImages = $request->file('gallery');
+            $project->addGalleryMedia($galleryImages);
+        }
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
@@ -74,41 +65,34 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         $request->validate([
-            'title' => 'required|max:255',
+            'title' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'creation_year' => 'required|integer|min:1900|max:' . date('Y'),
+            'creation_year' => 'required|integer|min:1900',
             'description' => 'required|string',
             'domain' => 'nullable|string|max:64',
-            'gallery' => 'nullable|string',
-            'cost_from' => 'nullable|integer',
-            'cost_to' => 'nullable|integer|gte:cost_from',
+            'cost_from' => 'nullable|numeric|min:0',
+            'cost_to' => 'nullable|numeric|min:' . ($request->cost_from ?: 0),
             'archived' => 'boolean',
-            'tags' => 'nullable|array',
-            'tags.*' => 'integer|exists:tags,id',
+            'gallery' => 'nullable|array',
+            'gallery.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Проверяем наличие файла image в запросе
+        // Handle file upload for main image
+        $projectData = $request->only(['title', 'creation_year', 'description', 'domain', 'cost_from', 'cost_to', 'archived']);
         if ($request->hasFile('image')) {
-            $image = $request->file('image');
-
-            // Генерируем уникальное имя файла, сохраняем оригинальное имя для отображения в представлении
-            $imageName = time() . '_' . $image->getClientOriginalName();
-
-            // Проверяем наличие файла с таким именем на сервере и удаляем его
-            if (Storage::exists('images/projects/' . $project->image_path)) {
-                Storage::delete('images/projects/' . $project->image_path);
-            }
-
-            // Сохраняем файл с уникальным именем
-            $image->storeAs('images/projects', $imageName, 'public');
-
-            // Сохраняем имя файла изображения в поле image_path модели Project
-            $request->merge(['image_path' => $imageName]);
+            $imagePath = $request->file('image')->store('public/projects');
+            $projectData['image_path'] = $imagePath;
         }
 
-        // Update the project and associate tags if provided
-        $project->update($request->all());
-        $project->tags()->sync($request->tags);
+        // Update the project
+        $project->update($projectData);
+
+        // Handle file upload for gallery images
+        if ($request->hasFile('gallery')) {
+            $galleryImages = $request->file('gallery');
+            $project->removeGalleryMedia($project->getGalleryMedia()->pluck('id')->toArray());
+            $project->addGalleryMedia($galleryImages);
+        }
 
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }

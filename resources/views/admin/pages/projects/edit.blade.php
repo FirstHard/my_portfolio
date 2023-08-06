@@ -23,6 +23,10 @@
                 <label for="image" class="form-label">Image</label>
                 <input type="file" name="image" id="image" class="form-control bg-dark text-white rounded-1">
             </div>
+            <div class="mb-3">
+                <label for="gallery" class="form-label">Gallery</label>
+                <input type="file" name="gallery[]" id="gallery" class="form-control bg-dark text-white rounded-1" multiple>
+            </div>
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="creation_year" class="form-label">Creation Year</label>
@@ -47,6 +51,19 @@
                         value="{{ $project->cost_to }}">
                 </div>
             </div>
+            @if ($project->getMedia('gallery')->count() > 0)
+                <div class="mb-3">
+                    <label for="current_gallery" class="form-label">Current Gallery</label>
+                    <div class="row">
+                        @foreach ($project->getMedia('gallery') as $image)
+                            <div class="col-3">
+                                <img src="{{ $image->getUrl('thumb') }}" alt="Image" class="img-thumbnail">
+                                <a href="{{ route('projects.deleteImage', ['project' => $project->id, 'imageId' => $image->id]) }}" class="btn btn-sm btn-danger mt-2">Delete</a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
             <div class="mb-3">
                 <label for="tags" class="form-label">Tags</label>
                 <select name="tags[]" id="tags" class="form-control bg-dark text-white rounded-1" multiple>
