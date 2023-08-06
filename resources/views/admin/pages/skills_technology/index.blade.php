@@ -1,4 +1,3 @@
-<!-- resources/views/admin/skills_technology/index.blade.php -->
 @extends('admin.layouts.adminapp')
 
 @section('content')

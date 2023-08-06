@@ -8,6 +8,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\SkillsTechnologyController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TagController;
 
 Auth::routes(['verify' => true]);
 
@@ -17,6 +19,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::resource('about', AboutController::class)->except(['index', 'destroy']);
     Route::resource('skills-technology', SkillsTechnologyController::class);
     Route::resource('experience', ExperienceController::class)->except(['show']);
+    Route::resource('projects', ProjectController::class);
+    Route::resource('tags', TagController::class);
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
