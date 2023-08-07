@@ -47,6 +47,28 @@
                 <li class="breadcrumb-item"><a href="{{ route('experience.index', 1) }}">Experience</a></li>
                 <li class="breadcrumb-item active">Edit : "{{ $experience->title }}"</li>
             @endif
+        @elseif (request()->is('admin/projects') || request()->is('admin/projects/*'))
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            @if (request()->route()->named('projects.index'))
+                <li class="breadcrumb-item active">Projects</li>
+            @elseif (request()->route()->named('projects.create'))
+                <li class="breadcrumb-item"><a href="{{ route('projects.index', 1) }}">Projects</a></li>
+                <li class="breadcrumb-item active">Create Project</li>
+            @elseif (request()->route()->named('projects.edit'))
+                <li class="breadcrumb-item"><a href="{{ route('projects.index', 1) }}">Projects</a></li>
+                <li class="breadcrumb-item active">Edit : "{{ $project->title }}"</li>
+            @endif
+        @elseif (request()->is('admin/tags') || request()->is('admin/tags/*'))
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            @if (request()->route()->named('tags.index'))
+                <li class="breadcrumb-item active">Tags</li>
+            @elseif (request()->route()->named('tags.create'))
+                <li class="breadcrumb-item"><a href="{{ route('tags.index', 1) }}">Tags</a></li>
+                <li class="breadcrumb-item active">Create Tag</li>
+            @elseif (request()->route()->named('tags.edit'))
+                <li class="breadcrumb-item"><a href="{{ route('tags.index', 1) }}">Tags</a></li>
+                <li class="breadcrumb-item active">Edit : "{{ $tag->title }}"</li>
+            @endif
         @endif
     </ol>
 </nav>

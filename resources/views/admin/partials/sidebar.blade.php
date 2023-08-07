@@ -25,6 +25,16 @@
             <i class="bi bi-person"></i>
             <span>Experience</span>
         </a>
+        <a class="nav-link {{ request()->is('admin/projects*') ? 'active' : '' }}"
+            href="{{ route('projects.index') }}">
+            <i class="bi bi-person"></i>
+            <span>Projects</span>
+        </a>
+        <a class="nav-link {{ request()->is('admin/tags*') ? 'active' : '' }}"
+            href="{{ route('tags.index') }}">
+            <i class="bi bi-person"></i>
+            <span>Tags</span>
+        </a>
     </li>
 
     {{-- 

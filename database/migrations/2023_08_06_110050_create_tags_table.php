@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::defaultStringLength(191);
-
-        Schema::create('skills_technology', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->unique();
-            $table->text('content');
+            $table->string('name');
+            $table->string('title');
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('skills_technology');
+        Schema::dropIfExists('tags');
     }
 };
