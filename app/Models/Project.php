@@ -14,6 +14,7 @@ class Project extends Model implements HasMedia
     protected $fillable = [
         'title',
         'image_path',
+        'logo_path',
         'creation_year',
         'description',
         'domain',
@@ -24,6 +25,12 @@ class Project extends Model implements HasMedia
 
     // Media collection name for the gallery
     private $galleryMediaCollection = 'gallery';
+
+    // Определение отношения многие-ко-многим с моделью Tag
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 
     // Function to set up media collections
     public function registerMediaCollections(): void

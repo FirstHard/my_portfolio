@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Tag;
-use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -27,6 +26,7 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'creation_year' => 'required|integer|min:1900',
             'description' => 'required|string',
             'domain' => 'nullable|string|max:64',
@@ -39,9 +39,19 @@ class ProjectController extends Controller
 
         // Handle file upload for main image
         $projectData = $request->only(['title', 'creation_year', 'description', 'domain', 'cost_from', 'cost_to', 'archived']);
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/projects');
-            $projectData['image_path'] = $imagePath;
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $file->storePubliclyAs('public/projects', $fileName);
+            $projectData['image_path'] = $fileName;
+        }
+
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $file = $request->file('logo');
+            $fileName = $file->getClientOriginalName();
+            $file->storePubliclyAs('public/projects', $fileName);
+            $projectData['logo_path'] = $fileName;
         }
 
         // Create the project
@@ -52,6 +62,9 @@ class ProjectController extends Controller
             $galleryImages = $request->file('gallery');
             $project->addGalleryMedia($galleryImages);
         }
+
+        // Сохранение связи тегов
+        $project->tags()->sync($request->input('tags', []));
 
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
@@ -79,9 +92,19 @@ class ProjectController extends Controller
 
         // Handle file upload for main image
         $projectData = $request->only(['title', 'creation_year', 'description', 'domain', 'cost_from', 'cost_to', 'archived']);
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/projects');
-            $projectData['image_path'] = $imagePath;
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $file = $request->file('image');
+            $fileName = $file->getClientOriginalName();
+            $file->storePubliclyAs('public/projects', $fileName);
+            $projectData['image_path'] = $fileName;
+        }
+
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $file = $request->file('logo');
+            $fileName = $file->getClientOriginalName();
+            $file->storePubliclyAs('public/projects', $fileName);
+            $projectData['logo_path'] = $fileName;
         }
 
         // Update the project
@@ -90,9 +113,12 @@ class ProjectController extends Controller
         // Handle file upload for gallery images
         if ($request->hasFile('gallery')) {
             $galleryImages = $request->file('gallery');
-            $project->removeGalleryMedia($project->getGalleryMedia()->pluck('id')->toArray());
+            $project->removeGalleryMedia($project->getMedia()->pluck('id')->toArray());
             $project->addGalleryMedia($galleryImages);
         }
+
+        // Сохранение связи тегов
+        $project->tags()->sync($request->input('tags', []));
 
         return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
     }
