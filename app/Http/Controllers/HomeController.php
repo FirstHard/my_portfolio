@@ -3,19 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Profile;
+use App\Models\About;
+use App\Models\SkillTechnology;
+use App\Models\Experience;
+use App\Models\Project;
+use App\Models\Tag;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    /* public function __construct()
-    {
-        $this->middleware('auth');
-    } */
-
     /**
      * Show the application dashboard.
      *
@@ -23,6 +19,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        $profile = Profile::first();
+        $about = About::first();
+        $skills = SkillTechnology::all();
+        $experiences = Experience::orderBy('created_at', 'desc')->get();
+        $projects = Project::all();
+        $tags = Tag::all();
+        $tagsString = $tags->pluck('name')->join(',');
+        return view('index', compact('profile', 'about', 'skills', 'experiences', 'projects', 'tags', 'tagsString'));
     }
 }
