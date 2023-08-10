@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", function () {
     let navbar = document.querySelector(".navbar");
 
     // Get all menu items
-    let menuItems = navbar.querySelectorAll(".scrollto");
+    let menuItems = document.querySelectorAll(".scrollto");
 
     // Process a click on each menu item
     menuItems.forEach((item) => {

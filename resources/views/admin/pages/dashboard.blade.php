@@ -133,5 +133,49 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-4">Tags</h4>
+                        </div>
+                        <div class="avatar-sm">
+                            <span class="avatar-title bg-dark text-primary rounded-3">
+                                <i class="bi bi-tags"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="profile-block d-flex justify-content-between">
+                        <a href="{{ route('tags.create') }}" class="btn btn-outline-info text-light rounded-1">Add
+                            new tag</a>
+                        <a href="{{ route('tags.index') }}" class="btn btn-outline-primary text-light rounded-1">View
+                            tags</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <div class="flex-grow-1">
+                            <h4 class="mb-4">Messages</h4>
+                        </div>
+                        <div class="avatar-sm">
+                            <span class="avatar-title bg-dark text-primary rounded-3">
+                                <i class="bi bi-envelope-paper-heart"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="profile-block d-flex justify-content-between">
+                        {{-- <a href="{{ route('tags.create') }}" class="btn btn-outline-info text-light rounded-1">Add
+                            new tag</a> --}}
+                        <a href="{{ route('messages.index') }}" class="btn btn-outline-primary text-light rounded-1">View
+                            messages</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
