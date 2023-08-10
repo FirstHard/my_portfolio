@@ -7,7 +7,8 @@
             <div class="contact bg-white">
                 <div class="row pt-3">
                     <div class="col-12 form mb-3">
-                        <form action="" method="POST">
+                        <form action="{{ route('contact') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control rounded-0" id="name" name="name"
@@ -24,12 +25,12 @@
                                     <select class="form-select rounded-0" id="subject" name="subject">
                                         <option value="" selected disabled>Select a subject</option>
                                         <option value="custom">Custom</option>
-                                        <option value="general">General inquiry</option>
-                                        <option value="part-time">I offer part-time employment</option>
-                                        <option value="full-time">Offering full-time employment</option>
+                                        <option value="General inquiry">General inquiry</option>
+                                        <option value="I offer part-time employment">I offer part-time employment</option>
+                                        <option value="Offering full-time employment">Offering full-time employment</option>
                                     </select>
                                     <input type="text" class="form-control d-none rounded-0" id="customSubject"
-                                        name="subject" placeholder="Your subject...">
+                                        name="custom_subject" placeholder="Your subject...">
                                 </div>
                             </div>
                             <div class="mb-3">
@@ -40,6 +41,13 @@
                             <button type="submit" class="btn btn-primary rounded-0">Submit</button>
                         </form>
                     </div>
+                    @if (session('success'))
+                        <div class="alert alert-success alert-dismissible rounded-0 mb-3" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
                     <hr>
                     <div class="col-12 text-center mt-3">
                         <h3 class="mb-3">You can also visit my profiles and contact me via private messages:</h3>

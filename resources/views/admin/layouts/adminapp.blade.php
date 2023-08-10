@@ -35,7 +35,7 @@
     ======================================================== -->
 </head>
 
-<body>
+<body id="app">
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
         @include('admin.partials.header')

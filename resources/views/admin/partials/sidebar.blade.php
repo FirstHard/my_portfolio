@@ -8,32 +8,36 @@
 
     <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/profile*') ? 'active' : '' }}" href="{{ route('profile.show', 1) }}">
-            <i class="bi bi-person"></i>
+            <i class="ri-user-3-line"></i>
             <span>Profile</span>
         </a>
         <a class="nav-link {{ request()->is('admin/about*') ? 'active' : '' }}" href="{{ route('about.show', 1) }}">
-            <i class="bi bi-person"></i>
+            <i class="bi bi-file-earmark-person-fill"></i>
             <span>About Me</span>
         </a>
         <a class="nav-link {{ request()->is('admin/skills-technology*') ? 'active' : '' }}"
             href="{{ route('skills-technology.index') }}">
-            <i class="bi bi-person"></i>
+            <i class="bi bi-card-checklist"></i>
             <span>Skills & Tech.</span>
         </a>
         <a class="nav-link {{ request()->is('admin/experience*') ? 'active' : '' }}"
             href="{{ route('experience.index') }}">
-            <i class="bi bi-person"></i>
+            <i class="bi bi-person-workspace"></i>
             <span>Experience</span>
         </a>
         <a class="nav-link {{ request()->is('admin/projects*') ? 'active' : '' }}"
             href="{{ route('projects.index') }}">
-            <i class="bi bi-person"></i>
+            <i class="bi bi-briefcase"></i>
             <span>Projects</span>
         </a>
-        <a class="nav-link {{ request()->is('admin/tags*') ? 'active' : '' }}"
-            href="{{ route('tags.index') }}">
-            <i class="bi bi-person"></i>
+        <a class="nav-link {{ request()->is('admin/tags*') ? 'active' : '' }}" href="{{ route('tags.index') }}">
+            <i class="bi bi-tags"></i>
             <span>Tags</span>
+        </a>
+        <a class="nav-link {{ request()->is('admin/messages*') ? 'active' : '' }}"
+            href="{{ route('messages.index') }}">
+            <i class="bi bi-envelope-paper-heart"></i>
+            <span>Messages</span>
         </a>
     </li>
 

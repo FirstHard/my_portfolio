@@ -31,7 +31,7 @@
                     <a href="#contact" class="nav-link scrollto">Contact</a>
                 </li>
             </ul>
-            <a href="#contact" class="btn btn-success rounded-0">
+            <a href="#contact" class="btn btn-success rounded-0 scrollto">
                 Contact
             </a>
         </div>

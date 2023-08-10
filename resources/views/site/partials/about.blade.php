@@ -7,8 +7,8 @@
             <div class="bg-white content pt-3">
                 {!! $about->content !!}
                 <div class="d-flex justify-content-evenly p-3">
-                    <a href="{{ route('cv.download') }}" class="btn btn-primary rounded-0">Download my CV</a> <a
-                        href="#contact" class="btn btn-success rounded-0">Contact me</a>
+                    <a href="{{ route('cv.download') }}" class="btn btn-primary rounded-0">Save my CV</a> <a
+                        href="#contact" class="btn btn-success rounded-0 scrollto">Contact me</a>
                 </div>
             </div>
         </div>
