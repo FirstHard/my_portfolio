@@ -7,7 +7,7 @@
             <div class="contact bg-white">
                 <div class="row pt-3">
                     <div class="col-12 form mb-3">
-                        <form action="{{ route('contact') }}" method="POST">
+                        <form action="{{ route('contact') }}" method="POST" id="contactForm">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Name</label>
@@ -26,8 +26,10 @@
                                         <option value="" selected disabled>Select a subject</option>
                                         <option value="custom">Custom</option>
                                         <option value="General inquiry">General inquiry</option>
-                                        <option value="I offer part-time employment">I offer part-time employment</option>
-                                        <option value="Offering full-time employment">Offering full-time employment</option>
+                                        <option value="I offer part-time employment">I offer part-time employment
+                                        </option>
+                                        <option value="Offering full-time employment">Offering full-time employment
+                                        </option>
                                     </select>
                                     <input type="text" class="form-control d-none rounded-0" id="customSubject"
                                         name="custom_subject" placeholder="Your subject...">
@@ -38,12 +40,30 @@
                                 <textarea class="form-control rounded-0" id="message" name="message" rows="4" placeholder="Your Message"
                                     required></textarea>
                             </div>
+                            {!!  GoogleReCaptchaV3::renderField('contactFormVerify','contact') !!}
+                            @if ($errors->has('g-recaptcha-response'))
+                                <div class="invalid-feedback text-danger" role="alert">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </div>
+                            @endif
                             <button type="submit" class="btn btn-primary rounded-0">Submit</button>
                         </form>
                     </div>
                     @if (session('success'))
                         <div class="alert alert-success alert-dismissible rounded-0 mb-3" role="alert">
                             {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger alert-dismissible rounded-0 mb-3" role="alert">
+                            <ul class="list-unstyled">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                             <button type="button" class="btn-close" data-bs-dismiss="alert"
                                 aria-label="Close"></button>
                         </div>

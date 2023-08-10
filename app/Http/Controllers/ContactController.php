@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ContactForm;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
+use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 class ContactController extends Controller
 {
@@ -17,6 +18,7 @@ class ContactController extends Controller
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
             'custom_subject' => 'nullable|string|max:255',
+            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('contact')],
         ]);
 
         if ($validatedData['subject'] === 'custom') {

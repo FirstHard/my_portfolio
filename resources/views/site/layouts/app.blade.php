@@ -14,6 +14,8 @@
 
     <!-- Scripts -->
     @vite(['resources/site/scss/app.scss', 'resources/site/js/app.js'])
+    {{-- <script src="https://www.google.com/recaptcha/api.js?render=6LcZCrkbAAAAAM2jsXfhjwi1CjR2lMr2PXUgHiL6"></script> --}}
+    {!!  GoogleReCaptchaV3::init() !!}
 </head>
 
 <body id="app">
