@@ -214,4 +214,28 @@ window.addEventListener("DOMContentLoaded", function () {
         readMoreSpan.classList.remove("d-none");
         hideMoreSpan.classList.add("d-none");
     });
+
+    /* document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            grecaptcha.ready(function () {
+                grecaptcha
+                    .execute("6LcZCrkbAAAAAM2jsXfhjwi1CjR2lMr2PXUgHiL6", {
+                        action: "submit",
+                    })
+                    .then(function (token) {
+                        var hiddenInput = document.createElement("input");
+                        hiddenInput.type = "hidden";
+                        hiddenInput.name = "g-recaptcha-response";
+                        hiddenInput.value = token;
+
+                        var form = document.getElementById("contactForm");
+                        form.insertBefore(hiddenInput, form.firstChild);
+                        form.removeEventListener("submit", this);
+                        form.submit();
+                    });
+            });
+        }); */
 });
