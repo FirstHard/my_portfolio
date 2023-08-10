@@ -57,25 +57,10 @@
                             <p class="mb-0">{{ $submission->message }}</p>
                         </div>
                         <div class="col-12 col-xl-3 d-flex align-items-center justify-content-evenly mb-3">
-                            <button class="btn btn-outline-primary mt-2 reply-button rounded-1" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#replyForm{{ $submission->id }}"
-                                aria-expanded="false" aria-controls="replyForm{{ $submission->id }}">
-                                Reply
-                            </button>
                             <button class="btn btn-outline-danger mt-2 delete-button rounded-1" type="button"
                                 data-bs-toggle="modal" data-bs-target="#deleteModal{{ $submission->id }}">
                                 Delete
                             </button>
-                        </div>
-                        <div class="collapse mb-3" id="replyForm{{ $submission->id }}">
-                            <form action="{{ route('messages.respond', $submission->id) }}" method="POST">
-                                @csrf
-                                <div class="mb-3">
-                                    <label for="reply" class="form-label text-light">Reply</label>
-                                    <textarea class="form-control bg-dark text-light rounded-1" id="reply" name="reply" rows="3"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-outline-success rounded-1">Send Reply</button>
-                            </form>
                         </div>
                     </div>
                 @endforeach
