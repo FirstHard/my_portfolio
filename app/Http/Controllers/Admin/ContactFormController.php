@@ -24,18 +24,6 @@ class ContactFormController extends Controller
         return view('admin.pages.contact.show', compact('contactForm'));
     }
 
-    public function respond(Request $request, $id)
-    {
-        $contactForm = ContactForm::findOrFail($id);
-
-        $this->validate($request, [
-            'response_message' => 'required|string',
-        ]);
-
-        return redirect()->route('admin.contact.show', $contactForm->id)
-            ->with('success', 'Response sent successfully');
-    }
-
     public function destroy($id)
     {
         $contactForm = ContactForm::findOrFail($id);
