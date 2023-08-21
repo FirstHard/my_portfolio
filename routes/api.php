@@ -1,7 +1,13 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\API\AboutController;
+use App\Http\Controllers\API\SkillTechnologyController;
+use App\Http\Controllers\API\ExperienceController;
+use App\Http\Controllers\API\ProjectController;
+use App\Http\Controllers\API\TagController;
+use App\Http\Controllers\API\ProjectTagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/* Route::get('/', [HomeController::class, 'index'])->name('home'); */
+
+Route::get('profile', ProfileController::class);
+Route::get('about', AboutController::class);
+Route::get('skills', SkillTechnologyController::class);
+Route::get('experiences', ExperienceController::class);
+Route::get('projects', ProjectController::class);
+Route::get('tags', TagController::class);
+Route::get('/project-tags', ProjectTagController::class);

@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AboutController;
@@ -27,7 +26,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::match(['post', 'get'], 'messages/{id}/respond', [ContactFormController::class, 'respond'])->name('messages.respond');
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('download_cv', [AboutController::class, 'downloadCV'])->name('cv.download');
 
-Route::post('/contact', [ContactController::class, 'submitForm'])->name('contact');
+Route::get('/', fn () => view('site.app'))->name('home');
+Route::post('/contact', [ContactController::class, 'submitForm']);
+Route::get('/check-auth', function () {
+    return response()->json(['authenticated' => auth()->check()]);
+});

@@ -1,10 +1,10 @@
 import 'bootstrap';
 
-import imagesLoaded from 'imagesloaded';
+/* import imagesLoaded from 'imagesloaded';
 window.imagesLoaded = imagesLoaded;
 
 import Masonry from 'masonry-layout';
-window.Masonry = Masonry;
+window.Masonry = Masonry; */
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

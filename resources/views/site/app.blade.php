@@ -14,12 +14,10 @@
 
     <!-- Scripts -->
     @vite(['resources/site/scss/app.scss', 'resources/site/js/app.js'])
-    {{-- <script src="https://www.google.com/recaptcha/api.js?render=6LcZCrkbAAAAAM2jsXfhjwi1CjR2lMr2PXUgHiL6"></script> --}}
-    {!!  GoogleReCaptchaV3::init() !!}
+    {{-- {!! GoogleReCaptchaV3::init() !!} --}}
 </head>
 
-<body id="app">
-
+<body>
     <div class="image-container top-left-image">
         <img src="{{ asset('storage/site/img/background-left-top.jpg') }}">
     </div>
@@ -27,24 +25,9 @@
     <div class="image-container bottom-right-image">
         <img src="{{ asset('storage/site/img/background-right-bottom.jpg') }}">
     </div>
-
-    @include('site.partials.navigation')
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="header">
-        @include('site.partials.header')
-    </header>
-    <!-- End Header -->
-
-    <!-- ======= Main ======= -->
-    <main id="main" class="main mb-5">
-        @yield('content')
-    </main>
-    <!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    @include('site.partials.footer')
-    <!-- End Footer -->
+    <div id="app">
+        <contact-form :sitekey="{{ json_encode(config('services.google_recaptcha.site_key')) }}"></contact-form>
+    </div>
 </body>
 
 </html>

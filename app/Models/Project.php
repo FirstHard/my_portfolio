@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Project extends Model implements HasMedia
 {
@@ -59,5 +60,15 @@ class Project extends Model implements HasMedia
         $this->media()
             ->whereIn('id', $mediaIds)
             ->delete();
+    }
+
+    public function getMediaUrls(string $collection): array
+    {
+        return $this->getMedia($collection)->map(function (Media $media) {
+            return [
+                'id' => $media->id,
+                'url' => $media->getUrl(),
+            ];
+        })->toArray();
     }
 }

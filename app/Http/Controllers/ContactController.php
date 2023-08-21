@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ContactForm;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactFormMail;
-use TimeHunter\LaravelGoogleReCaptchaV3\Validations\GoogleReCaptchaV3ValidationRule;
 
 class ContactController extends Controller
 {
@@ -18,9 +18,10 @@ class ContactController extends Controller
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
             'custom_subject' => 'nullable|string|max:255',
-            'g-recaptcha-response' => [new GoogleReCaptchaV3ValidationRule('contact')],
+            'g-recaptcha-response' => 'required|captcha',
         ]);
 
+        // Proceed with form submission
         if ($validatedData['subject'] === 'custom') {
             $validatedData['subject'] = $validatedData['custom_subject'];
         }
@@ -29,6 +30,6 @@ class ContactController extends Controller
 
         Mail::to(config('mail.to.address'))->queue(new ContactFormMail($validatedData));
 
-        return redirect('/')->with('success', 'Form submitted successfully!');
+        return response()->json(['message' => 'Form submitted successfully']);
     }
 }
