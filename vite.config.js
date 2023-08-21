@@ -28,7 +28,7 @@ export default defineConfig({
         alias: {
             vue: "vue/dist/vue.esm-bundler.js",
             "~bootstrap": "node_modules/bootstrap",
-            "~admin_assets": "resources/admin/assets"
+            "~admin_assets": "resources/admin/assets",
         },
     },
 });

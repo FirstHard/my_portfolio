@@ -57,7 +57,7 @@
                                             <img src="{{ $media->getUrl() }}" class="d-block w-100"
                                                 alt="{{ $project->title }}">
                                         </div>
-                                        {{ $firstItem = false }} // Сбрасываем флаг после первого элемента
+                                        {{ $firstItem = false }}
                                     @endforeach
                                 </div>
                                 @if (count($project->getMedia('gallery')) > 1)

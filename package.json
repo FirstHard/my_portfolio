@@ -7,6 +7,8 @@
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",
+        "@types/imagesloaded": "^4.1.2",
+        "@types/masonry-layout": "^4.2.5",
         "@vitejs/plugin-vue": "^4.0.0",
         "axios": "^1.1.2",
         "bootstrap": "^5.2.3",
@@ -14,6 +16,7 @@
         "sass": "^1.56.1",
         "tinymce": "^6.6.1",
         "vite": "^4.0.0",
+        "volar-service-vetur": "latest",
         "vue": "^3.2.37"
     },
     "dependencies": {
@@ -27,6 +30,10 @@
         "masonry-layout": "^4.2.2",
         "sass": "^1.56.1",
         "vite": "^4.0.0",
-        "vue": "^3.2.37"
+        "vue": "^3.2.37",
+        "vue-recaptcha": "^2.0.0",
+        "vue-router": "^4.0.13",
+        "vue-scrollto": "^2.20.0",
+        "vuex": "^4.1.0"
     }
 }

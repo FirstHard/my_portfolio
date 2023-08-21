@@ -1,5 +1,4 @@
 import './bootstrap';
-import './main.js';
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -8,6 +7,9 @@ import './main.js';
  */
 
 import { createApp } from 'vue';
+import App from './App.vue';
+import store from './src/store/index.js';
+import './main.js';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -15,10 +17,9 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
-
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+const app = createApp(App);
+app
+.use(store);
 
 /**
  * The following block of code may be used to automatically register your
