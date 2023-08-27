@@ -1,4 +1,4 @@
-import '../../../site/js/bootstrap'
+// import 'bootstrap';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -24,6 +24,7 @@ import 'tinymce/skins/ui/oxide-dark/skin.min.css';
 import 'tinymce/skins/content/dark/content.min.css';
 // Importing a theme
 import 'tinymce/themes/silver';
+import '~admin_assets/scss/app.scss';
 import '~admin_assets/js/main.js';
 // import { createApp } from 'vue';
 
