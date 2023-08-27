@@ -9,8 +9,8 @@ export default defineConfig({
     plugins: [
         laravel({
             input: {
-                admin: ["resources/admin/assets/js/app.js"],
-                site: ["resources/site/js/app.js"]
+                admin: "resources/admin/assets/js/app.js",
+                site: "resources/site/js/app.js"
             },
             refresh: true,
             sourcemap: false,

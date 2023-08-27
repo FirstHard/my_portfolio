@@ -9,6 +9,7 @@ import './bootstrap';
 import { createApp } from 'vue';
 import App from './App.vue';
 import store from './src/store/index.js';
+import '../scss/app.scss'; 
 import './main.js';
 
 /**
