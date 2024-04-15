@@ -71,7 +71,7 @@
                     <div class="row">
                         @foreach ($project->getMedia('gallery') as $image)
                             <div class="col-3">
-                                <img src="{{ $image->getUrl() }}" alt="Image" class="img-thumbnail">
+                                <img src="{{ $image->getUrl() }}" alt="{{ $project->title }}" class="img-thumbnail">
                                 {{-- <a href="{{ route('projects.deleteImage', ['project' => $project->id, 'imageId' => $image->id]) }}"
                                     class="btn btn-sm btn-danger mt-2">Delete</a> --}}
                             </div>

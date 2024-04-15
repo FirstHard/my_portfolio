@@ -1,4 +1,4 @@
-// import 'bootstrap';
+import 'bootstrap';
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -19,6 +19,8 @@ import 'tinymce/plugins/wordcount';
 import 'tinymce/plugins/emoticons';
 import 'tinymce/plugins/fullscreen';
 import 'tinymce/plugins/preview';
+import 'tinymce/icons/default/icons';
+import 'tinymce/models/dom/model';
 // Importing Styles for TinyMCE
 import 'tinymce/skins/ui/oxide-dark/skin.min.css';
 import 'tinymce/skins/content/dark/content.min.css';

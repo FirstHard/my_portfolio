@@ -10,7 +10,8 @@ export default defineConfig({
         laravel({
             input: {
                 admin: "resources/admin/assets/js/app.js",
-                site: "resources/site/js/app.js"
+                site: "resources/site/js/app.js",
+                home: "resources/site/js/home.js"
             },
             refresh: true,
             sourcemap: false,

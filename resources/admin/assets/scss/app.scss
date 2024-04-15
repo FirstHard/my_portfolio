@@ -6,3 +6,6 @@
 @import "../vendor/remixicon/remixicon.css";
 @import "../vendor/simple-datatables/style.css";
 @import "../css/style.css";
+// Importing Styles for TinyMCE
+@import "../../../../node_modules/tinymce/skins/ui/oxide-dark/skin.min.css";
+@import "../../../../node_modules/tinymce/skins/content/dark/content.min.css";

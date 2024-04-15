@@ -17,7 +17,7 @@
                     <div class="col">
                         <div class="card">
                             @if ($project->image_path)
-                                <img src="{{ asset('storage/projects/' . $project->image_path) }}" alt="{{ $project->title }}"
+                                <img src="/storage/projects/{{ $project->image_path }}" alt="{{ $project->title }}"
                                     class="card-img-top">
                             @else
                                 <div class="card-body">

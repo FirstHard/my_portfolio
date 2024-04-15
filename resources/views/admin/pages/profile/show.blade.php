@@ -8,7 +8,7 @@
     @include('admin.partials.alert')
     @if ($profile)
         <div class="profile-info">
-            <img src="{{ asset('storage/photos/' . $profile->photo) }}" class="img-wluid" style="max-width: 200px"
+            <img src="{{ asset('storage/photos/' . $profile->photo) }}" class="img-fluid" style="max-width: 200px"
                 alt="Profile Photo">
             <h2>{{ $profile->position }}</h2>
             <p>Location: {{ $profile->location }}</p>
