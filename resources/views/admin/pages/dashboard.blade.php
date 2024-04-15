@@ -26,7 +26,7 @@
                                 class="btn btn-outline-info text-light rounded-1">Edit
                                 Profile</a>
                             <a href="{{ route('profile.show', ['profile' => $profile->id]) }}"
-                                class="btn btn-outline-primary text-light rounded-1">Wiew
+                                class="btn btn-outline-primary text-light rounded-1">View
                                 Profile</a>
                         @else
                             <a href="{{ route('profile.create') }}" class="btn btn-outline-info text-light rounded-1">Create

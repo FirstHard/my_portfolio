@@ -22,7 +22,7 @@
         rel="stylesheet">
     
     <!-- Scripts -->
-    @vite(['resources/admin/assets/scss/app.scss', 'resources/admin/assets/js/app.js', 'node_modules/tinymce/tinymce.min.js'])
+    @vite('resources/admin/assets/js/app.js')
 
     <!-- =======================================================
     * Template: NiceAdmin

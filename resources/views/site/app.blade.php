@@ -13,7 +13,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    @vite(['resources/site/scss/app.scss', 'resources/site/js/app.js'])
+    @vite('resources/site/js/app.js')
     {{-- {!! GoogleReCaptchaV3::init() !!} --}}
 </head>
 

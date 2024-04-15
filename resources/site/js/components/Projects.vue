@@ -44,7 +44,7 @@
                     :data-bs-target="'#' + project.domain.replace(/[-.]/g, '_')"
                   >
                     <img
-                      :src="'/storage/projects/' + project.image_path"
+                      :src="'storage/projects/' + project.image_path"
                       class="img-fluid"
                       :alt="project.title"
                     />
@@ -145,7 +145,7 @@
             <div class="col-12 col-lg-9">
               <div class="project-logo my-3 my-lg-0 text-center">
                 <img
-                  :src="'/storage/projects/' + project.logo_path"
+                  :src="'storage/projects/' + project.logo_path"
                   class="img-fluid"
                   :alt="project.title + ' logo'"
                 />
