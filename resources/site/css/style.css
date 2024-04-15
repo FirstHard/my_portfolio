@@ -265,14 +265,13 @@ h1 {
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s;
+    height: auto;
 }
 
 .portfolio-container.loaded {
     opacity: 1;
     visibility: visible;
     transition: opacity 0.3s ease-in-out;
-    height: 180px !important;
-    min-height: 180px;
 }
 
 .portfolio-item-content {

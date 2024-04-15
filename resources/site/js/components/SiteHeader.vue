@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12 col-xl-3 ps-xl-0">
             <div class="name bg-white text-center p-3">
-                <h1><span class="sky last-name">Buynov</span><br><span class="yellow first-name">Volodymyr</span></h1>
+                <h1><span class="sky first-name">Volodymyr</span><br><span class="yellow last-name">Buynov</span></h1>
                 <span class="green">{{ profile.position }}</span>
             </div>
         </div>

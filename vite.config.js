@@ -4,7 +4,8 @@ import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
     server: {
-        host: "portfolio.test",
+        https: true,
+        host: "buynov.pp.ua",
     },
     plugins: [
         laravel({
